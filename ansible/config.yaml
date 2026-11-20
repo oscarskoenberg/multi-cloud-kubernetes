@@ -1,0 +1,9 @@
+- name: Setup and Install Online Boutique
+  hosts: servers
+
+  tasks:
+    - name: Ensure git is installed
+      ansible.builtin.git:
+        repo: 'https://github.com/oscarskoenberg/uncertainty-aware-bursting.git'
+        clone: true
+        dest: /home/oscarskoenberg/
