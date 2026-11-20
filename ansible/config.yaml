@@ -3,7 +3,15 @@
 
   tasks:
     - name: Ensure git is installed
-      ansible.builtin.git:
+      ansible.builtin.command: 
+        cmd: git --version
+      register: git_installed
+      debug:
+        msg: "{{ git_installed.stdout }}"
+
+  tasks:
+    - name: Clone Github Repository
+      ansible.builtin.git: 
         repo: 'https://github.com/oscarskoenberg/uncertainty-aware-bursting.git'
         clone: true
         dest: /home/oscarskoenberg/
